@@ -10,12 +10,12 @@ export default function Sidebar() {
           startupnav
         </Link>
       </h1>
-      <p className="blog-motto" lang="en">
-        you can <em>start</em> up nav!
-      </p>
 
       <SidebarNav />
       <Toolbar />
+      <p className="blog-motto" lang="en">
+        you can <em>start</em> up nav!
+      </p>
     </aside>
   );
 }

@@ -33,7 +33,7 @@ export default function PostGrid({ posts }: Props) {
             </div>
 
             <div className="post-grid-overlay">
-              <p className="post-grid-meta">
+              <p className="post-grid-meta" lang="en">
                 {post.startupName} · {post.fundingAmount}
               </p>
               <h2 className="post-grid-title">{post.title}</h2>
