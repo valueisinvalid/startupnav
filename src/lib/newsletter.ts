@@ -17,7 +17,24 @@ function escapeHtml(value: string) {
     .replaceAll('"', "&quot;");
 }
 
-function absoluteUrl(siteUrl: string, path: string) {
+function englishUppercase(value: string) {
+  return value.toLocaleUpperCase("en-US");
+}
+
+function excerpt(content: string) {
+  const first = content
+    .split("\n")
+    .map((line) => line.trim())
+    .find((line) => line.length > 0 && !line.startsWith("!["));
+  if (!first) return "";
+  const plain = first
+    .replace(/!\[[^\]]*\]\([^)]+\)/g, "")
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+    .replace(/\s+/g, " ")
+    .trim();
+  if (plain.length <= 160) return plain;
+  return `${plain.slice(0, 157).trimEnd()}…`;
+}
   if (!path) return "";
   if (path.startsWith("http://") || path.startsWith("https://")) return path;
   return `${siteUrl.replace(/\/$/, "")}${path.startsWith("/") ? path : `/${path}`}`;
@@ -27,13 +44,16 @@ function buildEmailHtml(post: {
   title: string;
   startupName: string;
   fundingAmount: string;
+  content?: string;
   imageUrl?: string;
   postUrl: string;
   siteUrl: string;
 }) {
   const title = escapeHtml(post.title);
-  const startupName = escapeHtml(post.startupName);
-  const fundingAmount = escapeHtml(post.fundingAmount);
+  const meta = escapeHtml(
+    englishUppercase(`${post.startupName} · ${post.fundingAmount}`),
+  );
+  const preview = post.content ? escapeHtml(excerpt(post.content)) : "";
   const siteHost = post.siteUrl
     .replace(/^https?:\/\//, "")
     .replace(/\/$/, "");
@@ -58,19 +78,26 @@ function buildEmailHtml(post: {
             </tr>
             <tr>
               <td style="padding:22px 0 0;">
-                <p style="margin:0 0 8px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#a0a6ae;">
-                  ${startupName} · ${fundingAmount}
+                <p lang="en" style="margin:0 0 8px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:0.1em;color:#a0a6ae;">
+                  ${meta}
                 </p>
-                <h1 style="margin:0 0 16px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:16px;line-height:1.4;font-weight:700;color:#24262c;">
+                <h1 style="margin:0 0 10px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:16px;line-height:1.4;font-weight:700;color:#24262c;">
                   ${title}
                 </h1>
+                ${
+                  preview
+                    ? `<p style="margin:0 0 16px;font-family:Georgia,'Times New Roman',serif;font-size:13px;line-height:1.55;font-style:italic;color:#78806e;">
+                  ${preview}
+                </p>`
+                    : ""
+                }
               </td>
             </tr>
             ${
               imageUrl
                 ? `<tr>
               <td style="padding:0 0 16px;">
-                <img src="${escapeHtml(imageUrl)}" alt="${startupName}" width="440" style="display:block;width:100%;max-width:440px;height:auto;border:0;" />
+                  <img src="${escapeHtml(imageUrl)}" alt="" width="440" style="display:block;width:100%;max-width:440px;height:auto;border:0;" />
               </td>
             </tr>`
                 : ""
@@ -103,6 +130,7 @@ export async function notifySubscribers(post: {
   slug: string;
   startupName: string;
   fundingAmount: string;
+  content?: string;
   imageUrl?: string;
 }) {
   const resend = getResend();
@@ -130,6 +158,7 @@ export async function notifySubscribers(post: {
     title: post.title,
     startupName: post.startupName,
     fundingAmount: post.fundingAmount,
+    content: post.content,
     imageUrl: post.imageUrl,
     postUrl,
     siteUrl,
