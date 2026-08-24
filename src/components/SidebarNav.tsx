@@ -17,9 +17,9 @@ const menu = [
     match: (path: string) => path.startsWith("/about"),
   },
   {
-    href: "mailto:hello@thestartupnav.com",
+    href: "/iletisim",
     label: "İletişim",
-    match: () => false,
+    match: (path: string) => path.startsWith("/iletisim"),
   },
 ];
 
