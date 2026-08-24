@@ -87,18 +87,20 @@
   --font-serif: var(--font-source-serif), ui-serif, serif;
 }
 
-*,
-*::before,
-*::after {
+/* Tiny Grey Pointer - https://www.cursors-4u.com/cursor/tiny-grey-pointer */
+* {
   box-sizing: border-box;
-  cursor: url("/cursors/tiny-grey-pointer.png") 0 0, default;
+  cursor: url("https://cdn.cursors-4u.net/previews/tiny-grey-pointer-544443a3-32.webp")
+      32 32,
+    auto !important;
 }
+/* End www.Cursors-4U.com Code */
 
-input:not([type="button"]):not([type="submit"]):not([type="reset"]),
+input,
 textarea,
 select,
 [contenteditable="true"] {
-  cursor: text;
+  cursor: text !important;
 }
 
 ::selection {
@@ -417,7 +419,7 @@ em {
 /* Quote puzzle widget — fixed right on desktop */
 .quote-puzzle {
   position: fixed;
-  top: 76px;
+  top: 64px;
   right: 96px;
   z-index: 30;
   width: 210px;
