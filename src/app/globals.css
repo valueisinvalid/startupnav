@@ -252,14 +252,30 @@ em {
 }
 
 .blog-motto {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   margin: auto 0 0;
-  max-width: 11rem;
+  padding: 0;
+  border: none;
+  background: transparent;
+  max-width: 12rem;
+  text-align: left;
   font-family: var(--font-inconsolata), ui-monospace, monospace;
   font-size: 0.62rem;
   line-height: 1.45;
   letter-spacing: 0.04em;
   text-transform: lowercase;
   color: rgb(var(--permalinks));
+}
+
+.blog-motto-gif {
+  display: block;
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  flex-shrink: 0;
 }
 
 .blog-motto em {
