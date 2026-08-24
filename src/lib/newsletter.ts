@@ -78,8 +78,17 @@ function buildEmailHtml(post: {
                 </a>
               </td>
             </tr>
-            <tr>
+            ${
+              imageUrl
+                ? `<tr>
               <td style="padding:22px 0 0;">
+                <img src="${escapeHtml(imageUrl)}" alt="" width="440" style="display:block;width:100%;max-width:440px;height:auto;border:0;" />
+              </td>
+            </tr>`
+                : ""
+            }
+            <tr>
+              <td style="padding:${imageUrl ? "18px" : "22px"} 0 28px;">
                 <p lang="en" style="margin:0 0 8px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:0.1em;color:#a0a6ae;">
                   ${meta}
                 </p>
@@ -93,19 +102,6 @@ function buildEmailHtml(post: {
                 </p>`
                     : ""
                 }
-              </td>
-            </tr>
-            ${
-              imageUrl
-                ? `<tr>
-              <td style="padding:0 0 16px;">
-                  <img src="${escapeHtml(imageUrl)}" alt="" width="440" style="display:block;width:100%;max-width:440px;height:auto;border:0;" />
-              </td>
-            </tr>`
-                : ""
-            }
-            <tr>
-              <td style="padding:0 0 28px;">
                 <a href="${escapeHtml(post.postUrl)}" style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:0.04em;color:#002FA7;text-decoration:none;border-bottom:1px solid #002FA7;">
                   yazıyı oku →
                 </a>
