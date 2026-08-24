@@ -37,24 +37,13 @@ function buildEmailHtml(post: {
   const siteHost = post.siteUrl
     .replace(/^https?:\/\//, "")
     .replace(/\/$/, "");
-  const fontUrl = absoluteUrl(post.siteUrl, "/fonts/HussarBold.ttf");
+  const wordmarkUrl = absoluteUrl(post.siteUrl, "/images/email-wordmark.png");
   const imageUrl = post.imageUrl
     ? absoluteUrl(post.siteUrl, post.imageUrl)
     : "";
 
   return `<!DOCTYPE html>
 <html lang="tr">
-  <head>
-    <meta charset="utf-8" />
-    <style>
-      @font-face {
-        font-family: "HussarBold";
-        src: url("${escapeHtml(fontUrl)}") format("truetype");
-        font-weight: 400;
-        font-style: normal;
-      }
-    </style>
-  </head>
   <body style="margin:0;padding:0;background:#ffffff;">
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#ffffff;">
       <tr>
@@ -62,10 +51,8 @@ function buildEmailHtml(post: {
           <table role="presentation" width="440" cellpadding="0" cellspacing="0" style="max-width:440px;width:100%;">
             <tr>
               <td style="padding:0 0 18px;border-bottom:1px solid #e8e8e8;">
-                <a href="${escapeHtml(post.siteUrl)}" style="text-decoration:none;">
-                  <span style="font-family:'HussarBold',Arial,Helvetica,sans-serif;font-size:15px;line-height:1;letter-spacing:-0.02em;color:#24262c;text-transform:lowercase;">
-                    startupnav
-                  </span>
+                <a href="${escapeHtml(post.siteUrl)}" style="text-decoration:none;border:0;">
+                  <img src="${escapeHtml(wordmarkUrl)}" alt="startupnav" width="120" height="22" style="display:block;width:120px;height:22px;border:0;" />
                 </a>
               </td>
             </tr>
