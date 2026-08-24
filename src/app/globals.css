@@ -417,7 +417,7 @@ em {
 /* Quote puzzle widget — fixed right on desktop */
 .quote-puzzle {
   position: fixed;
-  top: 28px;
+  top: 76px;
   right: 96px;
   z-index: 30;
   width: 210px;
