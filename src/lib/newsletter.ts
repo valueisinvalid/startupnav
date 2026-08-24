@@ -50,6 +50,7 @@ function buildEmailHtml(post: {
   imageUrl?: string;
   postUrl: string;
   siteUrl: string;
+  unsubscribeUrl?: string;
 }) {
   const title = escapeHtml(post.title);
   const meta = escapeHtml(
@@ -109,10 +110,17 @@ function buildEmailHtml(post: {
             </tr>
             <tr>
               <td style="padding:16px 0 0;border-top:1px solid #e8e8e8;">
-                <p style="margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:11px;line-height:1.5;color:#a0a6ae;">
+                <p style="margin:0 0 8px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:11px;line-height:1.5;color:#a0a6ae;">
                   Bülten aboneliğin için gönderildi ·
                   <a href="${escapeHtml(post.siteUrl)}" style="color:#a0a6ae;text-decoration:none;">${escapeHtml(siteHost)}</a>
                 </p>
+                ${
+                  post.unsubscribeUrl
+                    ? `<p style="margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:11px;line-height:1.5;color:#a0a6ae;">
+                  <a href="${escapeHtml(post.unsubscribeUrl)}" style="color:#a0a6ae;text-decoration:underline;">Abonelikten çık</a>
+                </p>`
+                    : ""
+                }
               </td>
             </tr>
           </table>
@@ -150,26 +158,47 @@ export async function notifySubscribers(post: {
   const from =
     process.env.RESEND_FROM_EMAIL || "The StartupNav <onboarding@resend.dev>";
   const postUrl = `${siteUrl}/posts/${post.slug}`;
+  const replyTo =
+    process.env.RESEND_REPLY_TO || "terzimelikeozge@gmail.com";
 
   const subject = `startupnav · ${post.startupName}`;
-  const html = buildEmailHtml({
-    title: post.title,
-    startupName: post.startupName,
-    fundingAmount: post.fundingAmount,
-    content: post.content,
-    imageUrl: post.imageUrl,
-    postUrl,
-    siteUrl,
-  });
 
   let sent = 0;
   for (const sub of subscribers) {
     try {
+      const unsubscribeUrl = `${siteUrl.replace(/\/$/, "")}/api/unsubscribe?email=${encodeURIComponent(sub.email)}`;
+      const html = buildEmailHtml({
+        title: post.title,
+        startupName: post.startupName,
+        fundingAmount: post.fundingAmount,
+        content: post.content,
+        imageUrl: post.imageUrl,
+        postUrl,
+        siteUrl,
+        unsubscribeUrl,
+      });
+      const text = [
+        `startupnav`,
+        `${post.startupName} · ${post.fundingAmount}`,
+        post.title,
+        excerpt(post.content || ""),
+        `Yazıyı oku: ${postUrl}`,
+        `Abonelikten çık: ${unsubscribeUrl}`,
+      ]
+        .filter(Boolean)
+        .join("\n\n");
+
       await resend.emails.send({
         from,
         to: sub.email,
+        replyTo,
         subject,
         html,
+        text,
+        headers: {
+          "List-Unsubscribe": `<${unsubscribeUrl}>`,
+          "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
+        },
       });
       sent += 1;
     } catch (err) {
