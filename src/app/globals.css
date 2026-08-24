@@ -221,7 +221,7 @@ em {
 }
 
 .blog-title {
-  margin: 0 0 14px;
+  margin: 0 0 6px;
   padding: 0;
   width: 100%;
 }
@@ -242,6 +242,24 @@ em {
 .blog-logo-link:hover {
   color: rgb(var(--accent));
   opacity: 1;
+}
+
+.blog-motto {
+  margin: 0 0 16px;
+  max-width: 11rem;
+  font-family: var(--font-inconsolata), ui-monospace, monospace;
+  font-size: 0.62rem;
+  line-height: 1.45;
+  letter-spacing: 0.04em;
+  text-transform: lowercase;
+  color: rgb(var(--permalinks));
+}
+
+.blog-motto em {
+  font-style: italic;
+  font-family: var(--font-source-serif), ui-serif, serif;
+  color: rgb(var(--accent));
+  letter-spacing: 0;
 }
 
 .menu-list {
