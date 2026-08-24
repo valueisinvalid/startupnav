@@ -3,11 +3,7 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 async function main() {
-  await prisma.subscriber.deleteMany();
-  await prisma.post.deleteMany();
-
-  await prisma.post.createMany({
-    data: [
+  const posts = [
       {
         slug: "periodic-labs-otonom-bilimsel-kesif",
         title: "Periodic Labs: Otonom Laboratuvarlarla Bilimsel Keşfi Hızlandırmak",
@@ -100,10 +96,17 @@ Bu alan büyüyen bir pazar: yapay zeka ajan kategorisi 2024'te 5.25 milyar dola
 
 Kaynaklar: [Forbes Türkiye](https://www.forbes.com.tr/para-yatirim/yapay-zeka-girisimi-talp-20-milyon-dolar-degerleme-uzerinden-yatirim-aldi), [Tech Funding News](https://techfundingnews.com/meet-talp-ai-startup-with-turkish-roots-raising-20m-pre-seed-valuation-to-simulate-customers-with-ai-personas/)`,
       },
-    ],
-  });
+  ];
 
-  console.log("Seed tamamlandı: 4 yazı eklendi.");
+  for (const post of posts) {
+    await prisma.post.upsert({
+      where: { slug: post.slug },
+      create: post,
+      update: {},
+    });
+  }
+
+  console.log("Seed tamamlandı: yazılar hazır.");
 }
 
 main()

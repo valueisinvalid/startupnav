@@ -3,22 +3,23 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
 model Post {
-  id             String   @id @default(cuid())
-  slug           String   @unique
-  title          String
-  startupName    String
-  fundingAmount  String
-  content        String
-  imageUrl       String
-  publishedAt    DateTime @default(now())
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
-  notified       Boolean  @default(false)
+  id            String   @id @default(cuid())
+  slug          String   @unique
+  title         String
+  startupName   String
+  fundingAmount String
+  content       String
+  imageUrl      String
+  publishedAt   DateTime @default(now())
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  notified      Boolean  @default(false)
 }
 
 model Subscriber {

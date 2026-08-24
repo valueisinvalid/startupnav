@@ -1,0 +1,14 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: startupnav
+      POSTGRES_PASSWORD: startupnav
+      POSTGRES_DB: startupnav
+    ports:
+      - "5432:5432"
+    volumes:
+      - startupnav_pg:/var/lib/postgresql/data
+
+volumes:
+  startupnav_pg:

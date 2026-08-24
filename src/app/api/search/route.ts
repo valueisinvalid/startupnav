@@ -12,10 +12,10 @@ export async function GET(request: Request) {
   const results = await prisma.post.findMany({
     where: {
       OR: [
-        { title: { contains: q } },
-        { startupName: { contains: q } },
-        { fundingAmount: { contains: q } },
-        { content: { contains: q } },
+        { title: { contains: q, mode: "insensitive" } },
+        { startupName: { contains: q, mode: "insensitive" } },
+        { fundingAmount: { contains: q, mode: "insensitive" } },
+        { content: { contains: q, mode: "insensitive" } },
       ],
     },
     orderBy: { publishedAt: "desc" },
