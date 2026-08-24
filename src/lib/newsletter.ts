@@ -35,6 +35,8 @@ function excerpt(content: string) {
   if (plain.length <= 160) return plain;
   return `${plain.slice(0, 157).trimEnd()}…`;
 }
+
+function absoluteUrl(siteUrl: string, path: string) {
   if (!path) return "";
   if (path.startsWith("http://") || path.startsWith("https://")) return path;
   return `${siteUrl.replace(/\/$/, "")}${path.startsWith("/") ? path : `/${path}`}`;
