@@ -87,20 +87,18 @@
   --font-serif: var(--font-source-serif), ui-serif, serif;
 }
 
-/* Tiny Grey Pointer - https://www.cursors-4u.com/cursor/tiny-grey-pointer */
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
-  cursor: url("https://cdn.cursors-4u.net/previews/tiny-grey-pointer-544443a3-32.webp")
-      32 32,
-    auto !important;
+  cursor: url("/cursors/tiny-grey-pointer.png") 0 0, default;
 }
-/* End www.Cursors-4U.com Code */
 
-input,
+input:not([type="button"]):not([type="submit"]):not([type="reset"]),
 textarea,
 select,
 [contenteditable="true"] {
-  cursor: text !important;
+  cursor: text;
 }
 
 ::selection {
@@ -219,6 +217,11 @@ em {
 
   .main-grid {
     padding: 8px 20px 100px;
+  }
+
+  .blog-motto {
+    margin-top: 28px;
+    margin-bottom: 12px;
   }
 }
 
