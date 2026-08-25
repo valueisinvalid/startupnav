@@ -17,6 +17,17 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: "Şifre hatalı." }, { status: 401 });
   }
 
+  const { searchParams } = new URL(request.url);
+  const id = searchParams.get("id");
+
+  if (id) {
+    const post = await prisma.post.findUnique({ where: { id } });
+    if (!post) {
+      return NextResponse.json({ error: "Yazı bulunamadı." }, { status: 404 });
+    }
+    return NextResponse.json({ post });
+  }
+
   const posts = await prisma.post.findMany({
     orderBy: { publishedAt: "desc" },
     select: {
@@ -24,7 +35,10 @@ export async function GET(request: Request) {
       slug: true,
       title: true,
       startupName: true,
+      fundingAmount: true,
+      imageUrl: true,
       publishedAt: true,
+      updatedAt: true,
     },
   });
 
@@ -51,6 +65,62 @@ export async function DELETE(request: Request) {
     console.error("[posts delete]", err);
     return NextResponse.json(
       { error: "Yazı silinirken hata oluştu." },
+      { status: 500 }
+    );
+  }
+}
+
+export async function PATCH(request: Request) {
+  try {
+    const body = await request.json();
+    const password = String(body.password || "");
+
+    if (!isAuthorized(password)) {
+      return NextResponse.json({ error: "Şifre hatalı." }, { status: 401 });
+    }
+
+    const id = String(body.id || "").trim();
+    const title = String(body.title || "").trim();
+    const startupName = String(body.startupName || "").trim();
+    const fundingAmount = String(body.fundingAmount || "").trim();
+    const content = String(body.content || "").trim();
+    const imageUrl = String(body.imageUrl || "/images/post-phone.png").trim();
+
+    if (!id) {
+      return NextResponse.json({ error: "Yazı seçilmedi." }, { status: 400 });
+    }
+
+    if (!title || !startupName || !fundingAmount || !content) {
+      return NextResponse.json(
+        { error: "Tüm zorunlu alanları doldurun." },
+        { status: 400 }
+      );
+    }
+
+    const existing = await prisma.post.findUnique({ where: { id } });
+    if (!existing) {
+      return NextResponse.json({ error: "Yazı bulunamadı." }, { status: 404 });
+    }
+
+    const post = await prisma.post.update({
+      where: { id },
+      data: {
+        title,
+        startupName,
+        fundingAmount,
+        content,
+        imageUrl,
+      },
+    });
+
+    return NextResponse.json({
+      slug: post.slug,
+      message: "Yazı güncellendi.",
+    });
+  } catch (err) {
+    console.error("[posts patch]", err);
+    return NextResponse.json(
+      { error: "Yazı güncellenirken hata oluştu." },
       { status: 500 }
     );
   }

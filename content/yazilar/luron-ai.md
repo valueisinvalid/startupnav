@@ -1,0 +1,30 @@
+Başlık: Luron AI: Çağrı Merkezlerini Otonom Hale Getiren Sesli Yapay Zeka
+Startup adı: Luron AI
+Aldığı yatırım: Pre-seed $1M
+Görsel URL: /images/posts/luron-ai.webp
+
+---
+
+İnceleme metni (aşağıyı admin formuna yapıştır):
+
+Bir şirketin müşteriyle kurduğu ilk temas çoğu zaman bir telefon çağrısıdır. Ama o çağrıya ulaşmak, bekleyenler için dakika dakika uzayan bir işkenceye, şirket için ise maliyetli ve ölçeklenmesi zor bir operasyona dönüşür. Kaçırılmış çağrılar, yorgun temsilciler, tutarsız cevaplar, dil bariyerleri... Müşteri deneyiminin en kırılgan noktası hala burada.
+
+Luron AI tam olarak bu kırılganlığı hedef alıyor. San Francisco merkezli girişim, çağrı merkezlerini insan gücüne bağımlı bir maliyet merkezinden, 7/24 çalışan, çok dilli ve otonom bir sesli yapay zeka altyapısına dönüştürmeyi vadediyor. Şirketin iddiası net: her çağrıya anında cevap vermek, rutin işleri otomatik çözmek ve karmaşık dosyaları doğru insana, doğru bağlamla aktarmak.
+
+Şirketi 2025'te Şems Polat ve Mert Kaan Atan birlikte kurdu. Hikaye iki Robert Koleji mezununun yollarının Amerika'da yeniden kesişmesiyle başlıyor. Şems Polat, Harvard Üniversitesi'nde eğitimine devam ederken aynı zamanda Harvard Innovation Labs ekosisteminin içinde yer alıyor. Lisede öğrenci birliği başkanlığı yapmış, matematik olimpiyatlarıyla uğraşmış bir profil. Sesli yapay zeka teknolojisinin Amerika'da ilk olgunlaşmaya başladığı dönemde, aynı yaklaşımın Türkiye'ye ve global pazarlara neden gelmeyeceğini sorgulayan isimlerden biri.
+
+Mert Kaan Atan ise UC Berkeley eğitimli. Robert Koleji'nde startup kulübü başkanlığı yapmış. Luron AI onun dördüncü girişimi. Dokuzuncu sınıftan itibaren blockchain üzerine çalışmış, Duolingo benzeri bir yapay zeka öğrenme sitesi kurmuş, ardından Türkiye'de avukatlar ve hukuk büroları için hukuk odaklı bir yapay zeka ürünü geliştirmiş. Yani Luron AI, ani bir "ilk deneme" değil; yıllardır biriken bir girişimcilik kasının en iddialı hali. Şirketin GTM tarafında Manchester Üniversitesi kökenli Utkan İncetan gibi isimler de yer alıyor.
+
+Şubat 2026'da Luron AI, tohum öncesi (pre-seed) turunda 1 milyon dolar yatırım aldı. Turu Türkiye merkezli girişim sermayesi fonu e2vc ile New York merkezli TQ Ventures birlikte destekledi. PitchBook verilerine göre şirketin yatırımcıları arasında Harvard Innovation Launch Lab da bulunuyor. Kurucu Şems Polat, duyuru paylaşımında TQ Ventures ve e2vc'nin yanı sıra Andrew Marks, Enis Hulli, Arın Özkula, Başak Zorlutuna Bükümcü ve Tunya Irkad gibi erken dönem destekçilere de teşekkür etti. Şirket bu sermayeyi ekip genişletme, işe alım ve özellikle Türkiye'deki altyapı yatırımlarına ayırıyor.
+
+Luron AI'nin ürünü, klasik IVR menülerinin ötesinde konumlanan agentic bir sesli altyapı. Platform ses, SMS, sohbet ve e-posta kanallarını tek bir müşteri etkileşim katmanında birleştiriyor. Şirketin öne çıkardığı teknik vaatler arasında yaklaşık 500 milisaniyelik gecikme, 45'ten fazla dil desteği, sınırsıza yakın eşzamanlı çağrı kapasitesi ve yüzde 99.99 uptime SLA yer alıyor. Sistem önce markanın ses tonuna ve iş akışına göre ajanları tasarlıyor, sonra mevcut telefoni, CRM ve ticket sistemlerine entegre ediyor, ardından gerçek zamanlı analitikle izleyip konuşma zekasıyla sürekli iyileştiriyor.
+
+Kurucuların vurguladığı teknik fark, modelin kendisinden çok ürünün sahaya taşınması. Agentic onboarding yaklaşımıyla müşterinin CRM'ine, veritabanına ve farklı altyapılarına hızlı bağlantı kurmak, Luron'un rekabet alanını belirliyor. Dil desteği de sadece çeviri eklemek seviyesinde değil: Azerbaycan Türkçesinde Rusça kelimelerin karışması ya da Türkiye Türkçesinde yabancı ifadelerin araya girmesi gibi gerçek konuşma halleri, yerel kültür bilen ekiplerle modeller üzerinde çalışılarak ele alınıyor. Entegrasyon tarafında Salesforce, HubSpot, Zendesk, ServiceNow ve SIP trunking destekleniyor. Fiyatlandırma dakika bazlı; aylık 10 bin dakikadan milyonlarca dakikaya uzanan paketler ve dakikada yaklaşık 0.08 dolar seviyesinden başlayan bir kullanım modeli söz konusu.
+
+Çağrı merkezi operasyonunun temel sorunu basit: talep dalgalanır, insan kapasitesi ise sabit kalır. Luron AI bu noktada üç şeyi aynı anda hedefliyor. Birincisi kaçırılmayan çağrı; platform her çağrıya anında cevap verdiğini söylüyor. İkincisi maliyet; şirket operasyonel maliyetlerde yüzde 70'e varan düşüş iddiasını öne çıkarıyor, rutin Tier-1 işler yapay zekaya kayıyor. Üçüncüsü ölçülebilir müşteri deneyimi; CSAT, NPS ve ilk çağrıda çözüm gibi metrikler üzerinden optimizasyon vaat ediliyor.
+
+Müşteri portföyünde Türkiye en büyük pazar olarak öne çıkıyor; Japonya, Fransa ve ABD'den de müşteriler var. Şirketin sitesinde Nissan, Fiat, Renault, Fibabanka, Belçika Konsolosluğu, RE/MAX, TikTak, BYD ve Bridgemed Health gibi isimler yer alıyor. RE/MAX örneğinde potansiyel kiracılara yanıt süresinin üç kat hızlandığı aktarılıyor. Hedef sektörler arasında sağlık, gayrimenkul, otelcilik, restoran, finans, perakende ve sağlık turizmi bulunuyor.
+
+Telefon hala dünyanın en yaygın iletişim kanallarından biri. Luron AI'nin vizyonu bu kanalı ucundan ucuna orkestre etmek: çağrıyı almak, niyeti anlamak, veriyi CRM'e yazmak, randevu oluşturmak, gerekirse insan temsilciye bağlamak ve tüm bunu çok dilde, sürekli ölçekleyerek yapmak. Kurucular beş yıllık ufku tek bir çizgiye hapsetmiyor; önce Türkiye ve yakın pazarlarda güçlenip sonra daha geniş bir coğrafyaya yayılmayı hedefliyorlar. Luron'un fark yaratabileceği yer, güzel konuşabilen modelden ziyade kurumsal altyapıya hızlı oturan, çok kanallı ve çok dilli bir operasyon motoru kurabilmek.
+
+Kaynaklar: [Luron AI](https://www.luron.ai), [Swipeline](https://swipeline.co/luron-ai-cagri-merkezlerini-yapay-zekayla-optimize-etmek-icin-1-milyon-dolar-yatirim-aldi/), [Dealroom](https://app.dealroom.co/news/feed/harvard-and-uc-berkeley-grads-raise-1m-for-ai-that-turns-call-centres-fully-autonomous), [PitchBook](https://pitchbook.com/profiles/company/1080858-34), [Odatv](https://www.odatv.com/ekonomi/luron-ai-sems-polat-ve-mert-kaan-atan-odatvye-konustu-robert-kolejinden-abdye-milyon-dolarlik-yatirimin-hikayesi-musteri-temsilcisi-devri-kapandi-120146987)

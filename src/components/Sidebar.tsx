@@ -1,7 +1,6 @@
 import Link from "next/link";
 import SidebarNav from "./SidebarNav";
 import Toolbar from "./Toolbar";
-import BlogMotto from "./BlogMotto";
 
 export default function Sidebar() {
   return (
@@ -14,7 +13,9 @@ export default function Sidebar() {
 
       <SidebarNav />
       <Toolbar />
-      <BlogMotto />
+      <p className="blog-motto" lang="en">
+        you can <em>start</em> up nav!
+      </p>
     </aside>
   );
 }
