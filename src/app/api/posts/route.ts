@@ -11,6 +11,12 @@ function isAuthorized(password: string) {
   return password === adminPassword();
 }
 
+function normalizeImageSize(value: unknown) {
+  const size = String(value || "md").trim().toLowerCase();
+  if (size === "sm" || size === "md" || size === "lg") return size;
+  return "md";
+}
+
 export async function GET(request: Request) {
   const password = request.headers.get("x-admin-password") || "";
   if (!isAuthorized(password)) {
@@ -37,6 +43,7 @@ export async function GET(request: Request) {
       startupName: true,
       fundingAmount: true,
       imageUrl: true,
+      imageSize: true,
       publishedAt: true,
       updatedAt: true,
     },
@@ -85,6 +92,7 @@ export async function PATCH(request: Request) {
     const fundingAmount = String(body.fundingAmount || "").trim();
     const content = String(body.content || "").trim();
     const imageUrl = String(body.imageUrl || "/images/post-phone.png").trim();
+    const imageSize = normalizeImageSize(body.imageSize);
 
     if (!id) {
       return NextResponse.json({ error: "Yazı seçilmedi." }, { status: 400 });
@@ -110,6 +118,7 @@ export async function PATCH(request: Request) {
         fundingAmount,
         content,
         imageUrl,
+        imageSize,
       },
     });
 
@@ -140,6 +149,7 @@ export async function POST(request: Request) {
     const fundingAmount = String(body.fundingAmount || "").trim();
     const content = String(body.content || "").trim();
     const imageUrl = String(body.imageUrl || "/images/post-phone.png").trim();
+    const imageSize = normalizeImageSize(body.imageSize);
     const notify = Boolean(body.notify);
 
     if (!title || !startupName || !fundingAmount || !content) {
@@ -165,6 +175,7 @@ export async function POST(request: Request) {
         fundingAmount,
         content,
         imageUrl,
+        imageSize,
         notified: false,
       },
     });

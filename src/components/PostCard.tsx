@@ -8,6 +8,7 @@ export type PostCardData = {
   fundingAmount: string;
   content: string;
   imageUrl: string;
+  imageSize?: string | null;
   publishedAt: Date | string;
 };
 
@@ -82,7 +83,10 @@ export default function PostCard({ post, excerpt = true, fullPage = false }: Pro
         </div>
 
         {post.imageUrl ? (
-          <Link href={`/posts/${post.slug}`} className="post-media">
+          <Link
+            href={`/posts/${post.slug}`}
+            className={`post-media post-media--${post.imageSize || "md"}`}
+          >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={post.imageUrl} alt={post.startupName} />
           </Link>

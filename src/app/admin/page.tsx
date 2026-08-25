@@ -10,6 +10,7 @@ type AdminPost = {
   startupName: string;
   fundingAmount: string;
   imageUrl: string;
+  imageSize?: string;
 };
 
 const emptyForm = {
@@ -18,6 +19,7 @@ const emptyForm = {
   fundingAmount: "",
   content: "",
   imageUrl: "/images/post-phone.png",
+  imageSize: "md",
 };
 
 export default function AdminPage() {
@@ -28,6 +30,7 @@ export default function AdminPage() {
   const [fundingAmount, setFundingAmount] = useState(emptyForm.fundingAmount);
   const [content, setContent] = useState(emptyForm.content);
   const [imageUrl, setImageUrl] = useState(emptyForm.imageUrl);
+  const [imageSize, setImageSize] = useState(emptyForm.imageSize);
   const [notify, setNotify] = useState(true);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editingSlug, setEditingSlug] = useState("");
@@ -50,6 +53,7 @@ export default function AdminPage() {
     setFundingAmount(emptyForm.fundingAmount);
     setContent(emptyForm.content);
     setImageUrl(emptyForm.imageUrl);
+    setImageSize(emptyForm.imageSize);
     setNotify(true);
     setEditingId(null);
     setEditingSlug("");
@@ -132,6 +136,7 @@ export default function AdminPage() {
       setFundingAmount(post.fundingAmount);
       setContent(post.content);
       setImageUrl(post.imageUrl);
+      setImageSize(post.imageSize || "md");
       setNotify(false);
       window.scrollTo({ top: 0, behavior: "smooth" });
     } catch {
@@ -195,6 +200,7 @@ export default function AdminPage() {
                 fundingAmount,
                 content,
                 imageUrl,
+                imageSize,
               }
             : {
                 password,
@@ -203,6 +209,7 @@ export default function AdminPage() {
                 fundingAmount,
                 content,
                 imageUrl,
+                imageSize,
                 notify,
               }
         ),
@@ -225,6 +232,7 @@ export default function AdminPage() {
         setFundingAmount(emptyForm.fundingAmount);
         setContent(emptyForm.content);
         setImageUrl(emptyForm.imageUrl);
+        setImageSize(emptyForm.imageSize);
         setNotify(true);
         setEditingId(null);
         setEditingSlug("");
@@ -347,8 +355,20 @@ export default function AdminPage() {
                   required
                   value={imageUrl}
                   onChange={(e) => setImageUrl(e.target.value)}
-                  placeholder="/images/posts/luron-ai.webp"
+                  placeholder="/images/posts/luron_ai.jpeg"
                 />
+              </label>
+
+              <label>
+                Görsel boyutu
+                <select
+                  value={imageSize}
+                  onChange={(e) => setImageSize(e.target.value)}
+                >
+                  <option value="sm">Küçük (kompakt)</option>
+                  <option value="md">Orta</option>
+                  <option value="lg">Büyük</option>
+                </select>
               </label>
             </div>
 
